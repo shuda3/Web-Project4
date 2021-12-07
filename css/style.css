@@ -1,0 +1,12 @@
+td i {
+    cursor: pointer;
+}
+
+.fab {
+    font-size: 25px;
+}
+
+.fa-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Main Container -->
+    <div class="container">
+        <h2 class="text-center">Checkout</h2>
+
+
+        <h5>Billing address</h5>
+        <hr>
+
+        <form class="form-checkout">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputAddress">Street</label>
+                    <input type="street" class="form-control" id="street" placeholder="Street Address" required>
+                </div>
+            </div>
+                
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="City" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="state">State</label>
+                    <select id="state" class="form-control" required>
+                        <option selected value="">Choose...</option>
+                        <option value="NY">New York</option>
+                        <option value="GA">Georgia</option>                        
+                        <option value="CA">California</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="zipcode">Zipcode</label>
+                    <input type="text" class="form-control" id="zipcode" placeholder = "Zipcode" required>
+                </div>            
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="999-9999-9999" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="country">Country</label>
+                    <select id="country" class="form-control" required>
+                        <option selected value="">Choose...</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                    </select>
+                </div>
+            </div>           
+
+            <h5>Payment</h5>
+            <hr>
+
+             <div class="d-block my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment_type" id="payment_type" value="credit" checked>
+                    <label class="form-check-label" for="payment_type">
+                    Credit Card
+                    </label>
+                </div>    
+            </div>                
+            
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="card_name">Name on card</label>
+                    <input type="text" class="form-control" id="card_name" placeholder="Full name as displayed on card" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="card_number">Credit card number</label>
+                    <input type="text" class="form-control" id="card_number" placeholder="" required>
+                    <small id="cardNumberHelpBlock" class="form-text text-muted">                        
+                    </small>
+
+                    <div class="card-branches">
+                        <i class="fab fa-cc-amex fa-disabled"></i>
+                        <i class="fab fa-cc-visa fa-disabled"></i>
+                        <i class="fab fa-cc-diners-club fa-disabled"></i>
+                        <i class="fab fa-cc-mastercard fa-disabled"></i>
+                        <i class="fab fa-cc-jcb fa-disabled"></i>
+                        <i class="fab fa-cc-discover fa-disabled"></i>
+                        <i class="fab fa-cc-stripe uatp fa-disabled"></i>
+                    </div>                        
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="card_expiration">Expiration</label>
+                    <input type="month" class="form-control" id="card_expiration" placeholder="mm/yy" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="card_cvv">CVV</label>
+                    <input type="text" class="form-control" id="card_cvv" placeholder="" required>
+                </div>
+            </div>
+
+            <hr>
+            <button class="btn btn-primary btn-block" type="submit">Complete Transaction</button>
+
+    
+        </form>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="mainModal" tabindex="-1" aria-labelledby="mainModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="mainModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" id="mainModalClose">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body" id="mainModalBody">            
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        </div>
+    </div>    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

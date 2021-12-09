@@ -6,22 +6,22 @@
 		<title>
 			View Available Parking
 		</title>
-			<link rel="stylesheet" type="text/css" href="main.css"/>
+			<link rel="stylesheet" type="text/css" href="style.css"/>
 		<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
 		<style>
 			a{
 				font-size:25px;	
 			}
-		*{
-				text-align:center;
-		}
-		html{
-		background: url(slide5.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-		}
+			*{
+					text-align:center;
+			}
+			html{
+				background: url(slide5.jpg) no-repeat center center fixed; 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+			}
 			input {
     			border: 1.5px solid #030337;
     			border-radius: 4px;
@@ -43,17 +43,190 @@
 			table,tr,td{
 				margin:auto;
 			}
+			
+			.square-container {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.square {
+				position: relative;
+				flex-basis: calc(2%);
+				margin: 5px;
+				border: 1px solid;
+				box-sizing: border-box;
+				
+			}
+
+			.square::before {
+				content: '';
+				display: block;
+				padding-top: 100%;
+			}
+
+			.square .content {
+				position: absolute;
+				top: 0; left: 0;
+				height: 10px;
+				width: 10px;
+			}
+			
+			.available {
+				background-color: green;
+			}
+			
+			.taken {
+				background-color: red;
+			}
 		</style>
 	</head>
 	<body>
 		<div>
 			<ul>
-				<li><a href="home_page.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-				<li><a href="customer_homepage.php"><i class="fa fa-desktop" aria-hidden="true"></i> Dashboard</a></li>
-				<li><a href="logout_handler.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+				<li><a href="navigation.html"><i class="fa fa-desktop" aria-hidden="true"></i> Home </a></li>
 			</ul>
 		</div>
 		<h2>AVAILABLE PARKING</h2>
+		
+		<div class="square-container">
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+		  </div>
+			</div>
+		</div>
+		<br>
+		<div class="square-container">
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+		  </div>
+			</div>
+		</div>
+		<br>
+		
+		<div class="square-container">
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+		  </div>
+			</div>
+		</div>
+		<br>
+		
+		<div class="square-container">
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+
+		  <div class="square taken">
+			<div class="content">
+		  </div>
+			</div>
+		</div>
+		<br><br><br>
+		
+		<div class="square-container">
+
+		  <div class="square available">
+			<div class="content">
+			</div>
+		  </div>
+			<h3> Available </h3>
+		  <div class="square taken">
+			<div class="content">
+			</div>
+		  </div>
+		  <h3> Taken </h3>
+		</div>
+		
+		<div text-align="center">
+			<form>
+				<label for="spot"> Spot Number: </label> <br><br>
+				<input type="text" name="spot"><br><br>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+		
 		<?php
 
 					require_once('Database Connection file/mysqli_connect.php');
@@ -62,13 +235,6 @@
 						
 						$result = mysqli_query($dbc, $query);
 
-
-						//if(mysqli_stmt_num_rows($stmt)==0)
-						//{
-							//echo "<h3>No flights are available !</h3>";
-						//}
-						//else
-						//{
 							echo "<form action=\"book_parking_payment.php\" method=\"post\">";
 							echo "<table cellpadding=\"10\"";
 							echo "<tr>
@@ -91,7 +257,7 @@
     						?>
 							<table cellpadding="5">
 				<tr>
-					<td class="fix_table">Enter the No. of Days</td>
+					<td class="fix_table">Enter the Number of Days</td>
 				</tr>
 				<tr>
 					<td class="fix_table"><input type="number" name="no_of_days" placeholder="Eg. 2" required></td>
@@ -102,7 +268,6 @@
     						echo "<input type=\"submit\" value=\"Select Spot\" name=\"Select\">";
     						echo "</form>";
     					//}
-					//mysqli_stmt_close($stmt);
 					mysqli_close($dbc);
 		?>
 	</body>
